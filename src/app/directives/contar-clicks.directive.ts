@@ -4,7 +4,7 @@ import { Directive, HostListener, HostBinding } from "@angular/core";
     selector: 'li[contar-clicks]'
 })
 
-export class ContarClicksDirective{
+export class ContarClicksDirective {
     clickN = 0;
 
     @HostBinding('style.opacity') opacity: number = .1;
