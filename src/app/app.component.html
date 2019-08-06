@@ -1,6 +1,18 @@
 <!--The content below is only a placeholder and can be replaced.-->
+<!-- this creates a google map on the page with the given lat/lng from -->
+<!-- the component as the initial center of the map: -->
+<agm-map [latitude]="lat" [longitude]="lng">
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+</agm-map>
+<hr />
 <ul>
     <ng-container *ngFor="let lugar of lugares">
             <li *ngIf="lugar.active">{{lugar.nombre}}</li>
     </ng-container>        
+</ul>
+<h5>Mayores de edad</h5>
+<ul>
+    <ng-container *ngFor="let persona of personas" >
+        <li *ngIf="persona.edad > 18" >{{persona.nombre}}</li>
+    </ng-container>
 </ul>

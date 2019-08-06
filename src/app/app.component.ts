@@ -14,6 +14,14 @@ export class AppComponent {
     {active: false, nombre: 'Veterinaria huellas'},
     {active: true, nombre: 'Hotel Avanti'},
   ];
+  personas:any = [
+    {edad: 20, nombre: 'Victor Rivas'},
+    {edad: 15, nombre: 'Yuli Perez'},
+    {edad: 30, nombre: 'Manuelita Del Campo'},
+    {edad: 16, nombre: 'Pepe Mujica'},
+  ];
+  lat:number = 4.6560716;
+  lng:number = -74.0595918;
 
   constructor(){
   }
