@@ -8,12 +8,14 @@
             <h2>Lugares cercanos</h2>
             <ul class="list-group">
                 <ng-container *ngFor="let lugar of lugares">
-                    <li *ngIf="lugar.active" class="list-group-item">{{lugar.nombre}}</li>
+                    <a routerLink="/detalle/{{lugar.id}}" [queryParams]="{action2:'edit', referer:'google'}">
+                        <li *ngIf="lugar.active" class="list-group-item">{{lugar.nombre}}</li>
+                    </a>
                 </ng-container>        
             </ul>
         </div>   
         <div class="col-md-4">
             <h2>Destacados</h2>
         </div>        
-    </div>    
+    </div> 
 </div>
