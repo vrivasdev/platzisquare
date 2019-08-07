@@ -1,0 +1,38 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/lugares"> Lugares</a></li>
+        <li class="breadcrumb-item active" aria-current="page"> Contacto </li>
+    </ol>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <label for="">Nombre</label>
+            <input type="text" class="form-control">
+            <br/>
+            <label for="">Correo</label>
+            <input type="email" class="form-control">
+            <br/>
+            <label for="">Mensaje</label>
+            <textarea name="" id="" cols="30" rows="10" class="form-control"></textarea>
+            <hr>
+            <a href="" class="btn btn-primary">Enviar</a>
+            <a href="" class="btn btn-default" routerLink="/lugares">Cancelar</a>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                        <h5 class="card-title">Ubicanos</h5>
+                        <agm-map [latitude]="lat" [longitude]="lng">
+                                <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                        </agm-map>
+                        <div class="mx-auto" style="width: 100%;">
+                            <p><span><strong>Description:</strong></span> Ofecemos soluciones inteligentes</p>
+                            <p><span><strong>Email:</strong></span> tecnosolutions@gmail.com</p>
+                            <p><span><strong>Tlf:</strong></span> 555-555-55</p>
+                        </div>
+                </div>                
+            </div>                      
+        </div>
+    </div>    
+</div>
