@@ -10,7 +10,7 @@ export class DetalleComponent {
   id         = null;
   lugar: any = {};
 
-  constructor(private route: ActivatedRoute, private lugaresService:LugaresService) {
+  constructor(private route: ActivatedRoute, private lugaresService: LugaresService) {
     this.id    = this.route.snapshot.params['id'];
     this.lugar = this.lugaresService.buscarLugar(this.id);
   }

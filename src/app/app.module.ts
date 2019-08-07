@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AgmCoreModule } from '@agm/core';
@@ -9,6 +8,7 @@ import { AngularFireDatabaseModule, AngularFireDatabase } from '@angular/fire/da
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { AppComponent } from './app.component';
+import { CrearComponent } from './crear/crear.component';
 import { LugaresComponent } from './lugares/lugares.component';
 import { DetalleComponent } from './detalle/detalle.component';
 import { ContactoComponent } from './contacto/contacto.component';
@@ -33,6 +33,7 @@ const appRoutes: Routes = [
   {path: 'lugares', component: LugaresComponent},
   {path: 'detalle/:id', component: DetalleComponent},
   {path: 'contacto', component: ContactoComponent},
+  {path: 'crear', component: CrearComponent},
 ];
 
 @NgModule({
@@ -42,7 +43,8 @@ const appRoutes: Routes = [
     ContarClicksDirective,
     DetalleComponent,
     LugaresComponent,
-    ContactoComponent
+    ContactoComponent,
+    CrearComponent
   ],
   imports: [
     BrowserModule,
