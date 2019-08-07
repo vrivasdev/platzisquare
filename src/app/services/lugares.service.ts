@@ -14,12 +14,12 @@ export class LugaresService {
     ];
     constructor(private afDB: AngularFireDatabase) {}
     public getLugares() {
-        return this.lugares;
+        return this.afDB.list('lugares/').valueChanges();
     }
     public buscarLugar(id) {
         return this.lugares.filter(lugar => lugar.id === parseInt(id, 10))[0] || null;
     }
     public guardarLugar(lugar) {
-        this.afDB.database.ref('lugares/2').set(lugar);
+        this.afDB.database.ref('lugares/' + lugar.id).set(lugar);
     }
 }

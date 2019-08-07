@@ -12,6 +12,7 @@ export class CrearComponent {
 
   }
   guardarLugar() {
+    this.lugar.id = Date.now();
     this.lugaresService.guardarLugar(this.lugar);
   }
 }
