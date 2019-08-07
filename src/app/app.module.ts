@@ -13,6 +13,7 @@ import { ContactoComponent } from './contacto/contacto.component';
 import { ResaltarDirective } from './directives/resaltar.directive';
 import { ContarClicksDirective } from './directives/contar-clicks.directive';
 
+import { LugaresService } from './services/lugares.service';
 
 const appRoutes: Routes = [
   {path: '', component       : LugaresComponent},
@@ -38,7 +39,7 @@ const appRoutes: Routes = [
     }),
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [LugaresService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
