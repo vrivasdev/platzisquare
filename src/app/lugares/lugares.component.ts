@@ -7,8 +7,6 @@ import { LugaresService } from '../services/lugares.service';
 })
 export class LugaresComponent {
   title: string = 'PlatziSquare';
-  lat: number = 4.6560716;
-  lng: number = -74.0595918;
   lugares = null;
 
   constructor(private lugaresService: LugaresService) {
