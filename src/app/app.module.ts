@@ -22,7 +22,7 @@ import { LugaresService } from './services/lugares.service';
 export const firebaseConfig = {
   apiKey           : 'AIzaSyDIh5Xvi3Uttw-KaEomPqMEtCTCpCeGglk',
   authDomain       : 'platzisquare-248923.firebaseapp.com',
-  databaseURL      : 'https: //platzisquare-248923.firebaseio.com',
+  databaseURL      : 'https://platzisquare-248923.firebaseio.com',
   projectId        : 'platzisquare-248923',
   storageBucket    : '',
   messagingSenderId: '619450697948',

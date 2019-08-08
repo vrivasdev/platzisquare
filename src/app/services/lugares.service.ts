@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database/database';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class LugaresService {
+    API_ENDPOINT = 'https://platzisquare-248923.firebaseio.com';
     lugares: any = [
         { id: 1, plan: 'pagado', cercania  : 1, distancia: 1, active  : true, nombre : 'Florería la gardenia' },
         { id: 2, plan: 'gratuito', cercania: 1, distancia: 1.8, active: true, nombre : 'Donas la pasadita' },
@@ -21,7 +22,10 @@ export class LugaresService {
         return this.lugares.filter(lugar => lugar.id === parseInt(id, 10))[0] || null;
     }
     public guardarLugar(lugar) {
-        this.afDB.database.ref('lugares/' + lugar.id).set(lugar);
+        // this.afDB.database.ref('lugares/' + lugar.id).set(lugar);
+        const headers = new HttpHeaders({'Content-Type': 'application/json'});
+        return this.http.post(this.API_ENDPOINT + '/lugares.json', lugar,
+                              {headers: headers}).subscribe();
     }
     public obtenerGeoData(direccion) {
         return this.http.get('https://maps.google.com/maps/api/geocode/json?key=AIzaSyDVd7-b7HyS2dWGKoKO0vKeGFOXpAEbtVU&address=' + direccion);
