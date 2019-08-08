@@ -26,4 +26,10 @@ export class LugaresService {
     public obtenerGeoData(direccion) {
         return this.http.get('https://maps.google.com/maps/api/geocode/json?key=AIzaSyDVd7-b7HyS2dWGKoKO0vKeGFOXpAEbtVU&address=' + direccion);
     }
+    public getLugar(id) {
+        return this.afDB.object('lugares/' + id);
+    }
+    public editarLugar(lugar) {
+        this.afDB.database.ref('lugares/' + lugar.id).set(lugar);
+    }
 }
