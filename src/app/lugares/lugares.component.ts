@@ -10,10 +10,7 @@ export class LugaresComponent {
   lugares = null;
 
   constructor(private lugaresService: LugaresService) {
-    this.lugaresService.getLugares()
-      .valueChanges()
-      .subscribe(lugares => {
-        this.lugares = lugares;
-      });
+    this.lugaresService.getLugares() // .valueChanges() => if it's used with database queries
+      .subscribe(lugares => this.lugares = Object.values(lugares));
   }
 }

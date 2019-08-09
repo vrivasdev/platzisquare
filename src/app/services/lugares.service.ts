@@ -14,9 +14,9 @@ export class LugaresService {
         { id: 6, plan: 'gratuito', cercania: 3, distancia: 120, active: false, nombre: 'Hotel Avanti' },
         { id: 7, plan: 'gratuito', cercania: 3, distancia: 120, active: true, nombre : 'Hotel Super nova' },
     ];
-    constructor(private afDB: AngularFireDatabase, private http: HttpClient) {        }
+    constructor(private afDB: AngularFireDatabase, private http: HttpClient) {}
     public getLugares() {
-        return this.afDB.list('lugares/');
+        return this.http.get(this.API_ENDPOINT + '/lugares.json'); // return this.afDB.list('lugares/');
     }
     public buscarLugar(id) {
         return this.lugares.filter(lugar => lugar.id === parseInt(id, 10))[0] || null;
@@ -28,7 +28,8 @@ export class LugaresService {
                               {headers: headers}).subscribe();
     }
     public obtenerGeoData(direccion) {
-        return this.http.get('https://maps.google.com/maps/api/geocode/json?key=AIzaSyDVd7-b7HyS2dWGKoKO0vKeGFOXpAEbtVU&address=' + direccion);
+        const key = 'AIzaSyDVd7-b7HyS2dWGKoKO0vKeGFOXpAEbtVU';
+        return this.http.get('https://maps.google.com/maps/api/geocode/json?key=' + key + '&address=' + direccion);
     }
     public getLugar(id) {
         return this.afDB.object('lugares/' + id);
