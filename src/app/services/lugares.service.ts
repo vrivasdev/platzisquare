@@ -16,14 +16,13 @@ export class LugaresService {
     ];
     constructor(private afDB: AngularFireDatabase, private http: HttpClient) {}
     public getLugares() {
-        return this.http.get(this.API_ENDPOINT + '/.json') // Query DB: return this.afDB.list('lugares/');
+        return this.http.get(this.API_ENDPOINT + '/.js') // Query DB: return this.afDB.list('lugares/');
                    .map(resultado => resultado['lugares']);
     }
     public buscarLugar(id) {
         return this.lugares.filter(lugar => lugar.id === parseInt(id, 10))[0] || null;
     }
     public guardarLugar(lugar) {
-        // this.afDB.database.ref('lugares/' + lugar.id).set(lugar);
         const headers = new HttpHeaders({'Content-Type': 'application/json'});
         return this.http.post(this.API_ENDPOINT + '/lugares.json', lugar,
                               {headers: headers}).subscribe();
