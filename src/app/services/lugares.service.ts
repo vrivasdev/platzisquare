@@ -16,7 +16,8 @@ export class LugaresService {
     ];
     constructor(private afDB: AngularFireDatabase, private http: HttpClient) {}
     public getLugares() {
-        return this.http.get(this.API_ENDPOINT + '/lugares.json'); // return this.afDB.list('lugares/');
+        return this.http.get(this.API_ENDPOINT + '/.json') // Query DB: return this.afDB.list('lugares/');
+                   .map(resultado => resultado['lugares']);
     }
     public buscarLugar(id) {
         return this.lugares.filter(lugar => lugar.id === parseInt(id, 10))[0] || null;

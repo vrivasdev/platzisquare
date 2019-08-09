@@ -11,6 +11,8 @@ export class LugaresComponent {
 
   constructor(private lugaresService: LugaresService) {
     this.lugaresService.getLugares() // .valueChanges() => if it's used with database queries
-      .subscribe(lugares => this.lugares = Object.values(lugares));
+                       .subscribe(lugares => {
+                         this.lugares = Object.values(lugares);
+                        });
   }
 }
