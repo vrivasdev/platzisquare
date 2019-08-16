@@ -20,7 +20,7 @@ export class CrearComponent {
     }
   }
   guardarLugar() {
-    const direccion = this.lugar.calle + ',' + this.lugar.ciudad + ',' + this.lugar.pais;    
+    const direccion = this.lugar.calle + ',' + this.lugar.ciudad + ',' + this.lugar.pais;
     this.lugaresService.obtenerGeoData(direccion)
         .subscribe((result: any) => {
           this.lugar.lat = 4.6563044; // result.json().results[0].geometry.location.lat

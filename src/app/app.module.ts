@@ -19,6 +19,8 @@ import { ContarClicksDirective } from './directives/contar-clicks.directive';
 
 import { LugaresService } from './services/lugares.service';
 
+import { LinkifystrPipe } from './pipes/linkifystr.pipe';
+
 export const firebaseConfig = {
   apiKey           : 'AIzaSyDIh5Xvi3Uttw-KaEomPqMEtCTCpCeGglk',
   authDomain       : 'platzisquare-248923.firebaseapp.com',
@@ -45,7 +47,8 @@ const appRoutes: Routes = [
     DetalleComponent,
     LugaresComponent,
     ContactoComponent,
-    CrearComponent
+    CrearComponent,
+    LinkifystrPipe
   ],
   imports: [
     BrowserModule,

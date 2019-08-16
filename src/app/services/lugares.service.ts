@@ -6,26 +6,26 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class LugaresService {
     API_ENDPOINT = 'https://platzisquare-248923.firebaseio.com';
     lugares: any = [
-        { id: 1, plan: 'pagado', cercania  : 1, distancia: 1, active  : true, nombre : 'Florería la gardenia' },
-        { id: 2, plan: 'gratuito', cercania: 1, distancia: 1.8, active: true, nombre : 'Donas la pasadita' },
-        { id: 3, plan: 'gratuito', cercania: 2, distancia: 5, active  : true, nombre : 'Sushi Naka' },
-        { id: 4, plan: 'gratuito', cercania: 2, distancia: 10, active : false, nombre: 'Veterinaria huellas' },
-        { id: 5, plan: 'pagado', cercania  : 3, distancia: 35, active : true, nombre : 'Hotel Avanti' },
+        { id: 1, plan: 'pagado', cercania: 1, distancia: 1, active: true, nombre: 'Florería la gardenia' },
+        { id: 2, plan: 'gratuito', cercania: 1, distancia: 1.8, active: true, nombre: 'Donas la pasadita' },
+        { id: 3, plan: 'gratuito', cercania: 2, distancia: 5, active: true, nombre: 'Sushi Naka' },
+        { id: 4, plan: 'gratuito', cercania: 2, distancia: 10, active: false, nombre: 'Veterinaria huellas' },
+        { id: 5, plan: 'pagado', cercania: 3, distancia: 35, active: true, nombre: 'Hotel Avanti' },
         { id: 6, plan: 'gratuito', cercania: 3, distancia: 120, active: false, nombre: 'Hotel Avanti' },
-        { id: 7, plan: 'gratuito', cercania: 3, distancia: 120, active: true, nombre : 'Hotel Super nova' },
+        { id: 7, plan: 'gratuito', cercania: 3, distancia: 120, active: true, nombre: 'Hotel Super nova' },
     ];
-    constructor(private afDB: AngularFireDatabase, private http: HttpClient) {}
+    constructor(private afDB: AngularFireDatabase, private http: HttpClient) { }
     public getLugares() {
-        return this.http.get(this.API_ENDPOINT + '/.js') // Query DB: return this.afDB.list('lugares/');
-                   .map(resultado => resultado['lugares']);
+        return this.http.get(this.API_ENDPOINT + '/.json') // Query DB: return this.afDB.list('lugares/');
+            .map(resultado => resultado['lugares']);
     }
     public buscarLugar(id) {
         return this.lugares.filter(lugar => lugar.id === parseInt(id, 10))[0] || null;
     }
     public guardarLugar(lugar) {
-        const headers = new HttpHeaders({'Content-Type': 'application/json'});
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         return this.http.post(this.API_ENDPOINT + '/lugares.json', lugar,
-                              {headers: headers}).subscribe();
+            { headers: headers }).subscribe();
     }
     public obtenerGeoData(direccion) {
         const key = 'AIzaSyDVd7-b7HyS2dWGKoKO0vKeGFOXpAEbtVU';
