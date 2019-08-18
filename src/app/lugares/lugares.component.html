@@ -2,28 +2,38 @@
 <div *ngIf="error" class="alert alert-danger" role="alert">
     {{error}}
 </div>
-<agm-map [latitude]="lat" [longitude]="lng">
+<agm-map>
     <agm-marker *ngFor="let lugar of lugares" [latitude]="lugar.lat" [longitude]="lugar.lng"></agm-marker>
 </agm-map>
 <hr />
+<!--<div id="cuadrado" [@contenedorAnimable]="state" (@contenedorAnimable.start)="animacionInicia($event)" (@contenedorAnimable.done)="animacionTermina($event)" ></div>-->
+<!--<a class="btn btn-primary" role="button" (click)="animar()">Animar</a>-->
 <div class="container">
     <div class="row">
         <div class="col-md-8">
             <h2>Lugares cercanos</h2>
             <a class="btn btn-primary" routerLink="/crear/new">Crear Nuevo Negocio</a>
             <ul class="list-group">
-                <ng-container *ngFor="let lugar of lugares">                    
+                <ng-container *ngFor="let lugar of lugares">
                     <li class="list-group-item">
                         <a routerLink="/crear/{{lugar.id}}">{{lugar.nombre}} </a>
                         <br />
                         <small>Creado: {{lugar.id | date:'mediumTime' | uppercase}}</small>
                         <p [innerHtml]="lugar.descripcion | linkifystr"></p>
-                    </li>                    
-                </ng-container>        
+                    </li>
+                </ng-container>
             </ul>
-        </div>   
-        <div class="col-md-4">
+        </div>
+        <div class="col-md-4" [@contenedorAnimable]="state">
             <h2>Destacados</h2>
-        </div>        
-    </div> 
+            <ng-container *ngFor="let lugar of lugares">
+              <div class="bg-light padding" *ngIf="lugar.plan == 'pagado'" >
+                  <a routerLink="/crear/{{lugar.id}}">{{lugar.nombre}} </a>
+                  <br />
+                  <small>Creado: {{lugar.id | date:'mediumTime' | uppercase}}</small>
+                  <p [innerHtml]="lugar.descripcion | linkifystr"></p>
+              </div>
+          </ng-container>
+        </div>
+    </div>
 </div>
