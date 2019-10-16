@@ -10,16 +10,20 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { AppComponent } from './app.component';
 import { CrearComponent } from './crear/crear.component';
+import { LoginComponent } from './login/login.component';
 import { LugaresComponent } from './lugares/lugares.component';
 import { DetalleComponent } from './detalle/detalle.component';
 import { ContactoComponent } from './contacto/contacto.component';
+import { RegistroComponent } from './registro/registro.component';
 
 import { ResaltarDirective } from './directives/resaltar.directive';
 import { ContarClicksDirective } from './directives/contar-clicks.directive';
 
 import { LugaresService } from './services/lugares.service';
+import { AutorizacionService } from './services/autorizacion.service';
 
 import { LinkifystrPipe } from './pipes/linkifystr.pipe';
+import { MyGuard } from './services/my-guard.service';
 
 export const firebaseConfig = {
   apiKey           : 'AIzaSyDIh5Xvi3Uttw-KaEomPqMEtCTCpCeGglk',
@@ -36,7 +40,9 @@ const appRoutes: Routes = [
   {path: 'lugares', component: LugaresComponent},
   {path: 'detalle/:id', component: DetalleComponent},
   {path: 'contacto', component: ContactoComponent},
-  {path: 'crear/:id', component: CrearComponent},
+  {path: 'crear/:id', component: CrearComponent, canActivate: [MyGuard]},
+  {path: 'login', component: LoginComponent},
+  {path: 'registro', component: RegistroComponent},
 ];
 
 @NgModule({
@@ -48,6 +54,8 @@ const appRoutes: Routes = [
     LugaresComponent,
     ContactoComponent,
     CrearComponent,
+    LoginComponent,
+    RegistroComponent,
     LinkifystrPipe
   ],
   imports: [
@@ -62,7 +70,7 @@ const appRoutes: Routes = [
     AngularFireAuthModule,
     HttpClientModule
   ],
-  providers: [LugaresService],
+  providers: [LugaresService, AutorizacionService, MyGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
