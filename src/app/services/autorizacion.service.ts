@@ -27,13 +27,20 @@ export class AutorizacionService {
             })
             .catch(error => console.log('Error:', error));
     }
-
     public registro = (email, password) => {
         this.angularFireAuth.auth.createUserWithEmailAndPassword(email, password)
-            .then(response => alert('Usuario registrado con exito'))
+            .then(response => {
+                alert('Usuario registrado con exito');
+                this.router.navigate(['lugares']);
+            })
             .catch(error => console.log('Error:', error));
     }
     public isLogged() {
         return this.angularFireAuth.authState;
+    }
+    public logout() {
+        this.angularFireAuth.auth.signOut();
+        alert('Sesión cerrada');
+        this.router.navigate(['lugares']);
     }
 }
