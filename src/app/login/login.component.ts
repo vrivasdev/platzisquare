@@ -7,7 +7,6 @@ import { AutorizacionService } from '../services/autorizacion.service';
 })
 export class LoginComponent {
   loginParams: any = {};
-
   constructor(private autorizationService: AutorizacionService) {
   }
   login() {
