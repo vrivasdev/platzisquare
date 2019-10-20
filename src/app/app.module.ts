@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { AgmCoreModule } from '@agm/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from 'angularfire2';
 import { Routes, RouterModule } from '@angular/router';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -25,6 +25,7 @@ import { AutorizacionService } from './services/autorizacion.service';
 
 import { LinkifystrPipe } from './pipes/linkifystr.pipe';
 import { MyGuard } from './services/my-guard.service';
+import { HttpModule } from '@angular/http';
 
 export const firebaseConfig = {
   apiKey           : 'AIzaSyDIh5Xvi3Uttw-KaEomPqMEtCTCpCeGglk',
@@ -70,7 +71,9 @@ const appRoutes: Routes = [
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    HttpModule
   ],
   providers: [LugaresService, AutorizacionService, MyGuard],
   bootstrap: [AppComponent]
